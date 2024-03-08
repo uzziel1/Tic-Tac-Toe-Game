@@ -2,28 +2,6 @@ let ticTacToeHTML = `<p>Tic Tac Toe</p>
 <button class="js-play-button">Play</button>`;
 
 let ticTacToeButtonsHTML = "";
-
-//TIC TAC TOE GRID BUTTON VALUES HERE (pls learn how to make this more effectively later on...)
-let moveCounter = 0;
-let playersMove;
-let counter = 0;
-/*
-let R1;
-let M1;
-let L1;
-
-let R2;
-let M2;
-let L2;
-
-let R3;
-let M3;
-let L3;
-*/
-//TIC TAC TOE GRID VALUES END
-
-//Array Tic Tac Toe Values
-
 const gridButtons = [
   {
     name: "R1",
@@ -62,6 +40,25 @@ const gridButtons = [
     value: "",
   },
 ];
+
+//TIC TAC TOE GRID BUTTON VALUES HERE (pls learn how to make this more effectively later on...)
+let moveCounter = 0;
+let playersMove;
+let counter = 0;
+
+let R1 = gridButtons[0].value;
+let M1 = gridButtons[1].value;
+let L1 = gridButtons[2].value;
+
+let R2 = gridButtons[3].value;
+let M2 = gridButtons[4].value;
+let L2 = gridButtons[5].value;
+
+let R3 = gridButtons[6].value;
+let M3 = gridButtons[7].value;
+let L3 = gridButtons[8].value;
+
+//Array Tic Tac Toe Values
 
 function renderHTML() {
   document.querySelector(".js-main").innerHTML = ticTacToeHTML;
@@ -103,7 +100,38 @@ function playButton() {
   }
 }
 
-function checkWin() {}
+function checkWin() {
+  const winningCombinations = [
+    [0, 1, 2], // Top row
+    [3, 4, 5], // Middle row
+    [6, 7, 8], // Bottom row
+    [0, 3, 6], // Left column
+    [1, 4, 7], // Middle column
+    [2, 5, 8], // Right column
+    [0, 4, 8], // Diagonal from top-left to bottom-right
+    [2, 4, 6], // Diagonal from top-right to bottom-left
+  ];
+
+  for (const combination of winningCombinations) {
+    const [a, b, c] = combination;
+    const cells = [
+      gridButtons[a].value,
+      gridButtons[b].value,
+      gridButtons[c].value,
+    ];
+
+    if (cells.every((cell) => cell === "O")) {
+      alert("O Wins");
+      return;
+    } else if (cells.every((cell) => cell === "X")) {
+      alert("X Wins");
+      return;
+    }
+  }
+
+  console.log("Continue");
+}
+
 renderHTML();
 
 function chooseMove() {
@@ -158,7 +186,7 @@ function renderTicTacToeButtonHTML(move) {
   <p class = "moveTitle js-title">${move}'s Move</p>
   <div class="grid-buttons js-grid"></div>`;
   gridButtons.forEach((button) => {
-    ticTacToeButtonsHTML += `<button class = "ticTacToe js-buttons"> ${button.name} </button>`;
+    ticTacToeButtonsHTML += `<button class = "ticTacToe js-buttons" data-move-buttons = ${button.name}> ${button.name} </button>`;
   });
 
   renderHTML();
@@ -166,30 +194,47 @@ function renderTicTacToeButtonHTML(move) {
   ticTacToeButtonJs();
 }
 
+function changeName(button) {
+  button.innerHTML = `${playersMove}`;
+}
+
 function ticTacToeButtonJs() {
   document.querySelectorAll(".js-buttons").forEach((button) => {
-    let clicked;
     button.addEventListener(
       "click",
       () => {
-        clicked = true;
-        counter++;
-        button.value = `${playersMove}`;
-        console.log(`${button.name}: ${button.value}`);
-
         if (counter % 2 === 0) {
           playersMove = `O`;
         } else {
           playersMove = `X`;
         }
-        document.querySelector(".js-title").innerHTML = `${playersMove}'s Move`;
+
+        counter++;
+
+        button.value = playersMove;
+
+        const buttonId = button.dataset.moveButtons;
+        const buttonObject = gridButtons.find((obj) => obj.name === buttonId);
+
+        if (buttonObject && !buttonObject.value) {
+          // Check if the button's value is already set
+          if (!buttonObject.value) {
+            buttonObject.value = playersMove;
+            console.log(`${buttonId}: ${buttonObject.value}`);
+          } else {
+            // Handle case when button is already clicked
+            console.log(`${buttonId} already clicked`);
+            return;
+          }
+
+          changeName(button);
+          checkWin();
+          document.querySelector(
+            ".js-title"
+          ).innerHTML = `${playersMove}'s Move`;
+        }
       },
       { once: true }
     );
-
-    //DOES NOT WORK (FIGURE OUT HOW TO CHANGE THE BUTTONS TEXT TO THE PLAYERS MOVE ON THAT PARTICULAR BUTTON)
-    if (clicked) {
-      document.querySelector("js-buttons").innerHTML = `${playersMove}`;
-    }
   });
 }
