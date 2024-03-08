@@ -203,13 +203,8 @@ function ticTacToeButtonJs() {
     button.addEventListener(
       "click",
       () => {
-        if (counter % 2 === 0) {
-          playersMove = `O`;
-        } else {
-          playersMove = `X`;
-        }
-
         counter++;
+        console.log(counter);
 
         button.value = playersMove;
 
@@ -228,7 +223,14 @@ function ticTacToeButtonJs() {
           }
 
           changeName(button);
+
+          if (counter % 2 === 0) {
+            playersMove = `O`;
+          } else {
+            playersMove = `X`;
+          }
           checkWin();
+
           document.querySelector(
             ".js-title"
           ).innerHTML = `${playersMove}'s Move`;
