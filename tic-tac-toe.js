@@ -1,5 +1,14 @@
-let ticTacToeHTML = `<p>Tic Tac Toe</p>
-<button class="js-play-button">Play</button>`;
+let ticTacToeHTML = `<div class="play-container">
+<div>
+  <img
+    class="tic-tac-toe-logo"
+    src="images/Tic Tac Toe Logo(white).png"
+  />
+</div>
+<div>
+  <button class="js-play-button play-button">Play now</button>
+</div>
+</div>`;
 
 let ticTacToeButtonsHTML = "";
 const gridButtons = [
@@ -78,11 +87,22 @@ function renderButtonsHTML() {
   }
 }
 function playButton() {
-  ticTacToeHTML = `<p>Who is going first?</p>
-    <button class = "js-x-button">X</button> <button class = "js-o-button">O</button>
-    <br>
-    <br>
-    <button class="js-back-to-title-screen-button">Back to title screen</button>`;
+  ticTacToeHTML = `<div class="play-container">
+  <div>
+    <p class="going-first">Who is going first?</p>
+  </div>
+  <div>
+    <button class="js-x-button x-button">X</button>
+    <button class="js-o-button o-button">O</button>
+  </div>
+  <div class="title-screen-container">
+    <button
+      class="js-back-to-title-screen-button back-to-title-screen-button"
+    >
+      Back to title screen
+    </button>
+  </div>
+</div>`;
 
   renderHTML();
 
@@ -91,8 +111,17 @@ function playButton() {
   );
   if (backButtonElement) {
     backButtonElement.addEventListener("click", () => {
-      ticTacToeHTML = `<p>Tic Tac Toe</p>
-      <button class="js-play-button">Play</button>`;
+      ticTacToeHTML = `<div class="play-container">
+      <div>
+        <img
+          class="tic-tac-toe-logo"
+          src="images/Tic Tac Toe Logo(white).png"
+        />
+      </div>
+      <div>
+        <button class="js-play-button play-button">Play now</button>
+      </div>
+    </div>`;
       renderHTML();
     });
 
