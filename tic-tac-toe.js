@@ -155,6 +155,9 @@ function checkWin() {
     } else if (cells.every((cell) => cell === "X")) {
       alert("X Wins");
       return;
+    } else if (counter > 8) {
+      alert("Draw");
+      return;
     }
   }
 
@@ -212,10 +215,24 @@ function chooseMove() {
 
 function renderTicTacToeButtonHTML(move) {
   ticTacToeHTML = `
-  <p class = "moveTitle js-title">${move}'s Move</p>
-  <div class="grid-buttons js-grid"></div>`;
+  <div class="play-container">
+  <a class="logo-clicker" onclick="location.reload();">
+        <img
+          class="tic-tac-toe-logo"
+          src="images/Tic Tac Toe Logo(white).png"
+        />
+      </a>
+  <div class="title-background">
+    <p class="moveTitle js-title">${move}'s Move</p>
+  </div>
+
+  <div class="main-grid">
+    <div class="blank"></div>
+    <div class="grid-buttons js-grid"></div>
+    <div class="blank"></div>
+  </div>`;
   gridButtons.forEach((button) => {
-    ticTacToeButtonsHTML += `<button class = "ticTacToe js-buttons" data-move-buttons = ${button.name}> ${button.name} </button>`;
+    ticTacToeButtonsHTML += `<button class = "ticTacToe js-buttons" data-move-buttons = ${button.name}>&nbsp;</button>`;
   });
 
   renderHTML();

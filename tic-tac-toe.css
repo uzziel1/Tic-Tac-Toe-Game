@@ -20,8 +20,26 @@ div {
 } */
 
 .ticTacToe {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.152);
+  border: none;
+  border-radius: 15px;
+  transition: opacity 0.15s;
+}
+
+.ticTacToe:hover {
+  opacity: 0.8;
+}
+.ticTacToe:active {
+  opacity: 0.5;
 }
 .play-container {
   position: absolute;
@@ -30,9 +48,18 @@ div {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+.title-background {
+  background-color: rgba(34, 34, 34, 0.665);
+  padding: 5px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  box-shadow: 7px 7px 8px rgba(0, 0, 0, 0.43);
+}
 .moveTitle {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
+  color: white;
+  font-weight: bold;
 
   text-align: center;
 }
@@ -119,4 +146,23 @@ div {
 
 .back-to-title-screen-button:hover {
   opacity: 0.8;
+}
+.grid-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 50px;
+  row-gap: 70px;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 500px 1fr;
+}
+
+.back-to-title-screen-background {
+  margin-bottom: 15px;
+}
+
+.logo-clicker {
+  cursor: pointer;
 }

@@ -8,19 +8,78 @@
   </head>
   <body>
     <div class="play-container">
-      <div>
-        <p class="going-first">Who is going first?</p>
+      <a class="logo-clicker" onclick="location.reload();">
+        <img
+          class="tic-tac-toe-logo"
+          src="images/Tic Tac Toe Logo(white).png"
+        />
+      </a>
+
+      <div class="title-background">
+        <p class="moveTitle js-title">${move}'s Move</p>
       </div>
-      <div>
-        <button class="js-x-button x-button">X</button>
-        <button class="js-o-button o-button">O</button>
-      </div>
-      <div class="title-screen-container">
-        <button
-          class="js-back-to-title-screen-button back-to-title-screen-button"
-        >
-          Back to title screen
-        </button>
+
+      <div class="main-grid">
+        <div class="blank"></div>
+        <div>
+          <div class="grid-buttons js-grid">
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+            <button
+              class="ticTacToe js-buttons"
+              data-move-buttons="${button.name}"
+            >
+              ${button.name}
+            </button>
+          </div>
+          <div class="blank"></div>
+        </div>
       </div>
     </div>
   </body>
