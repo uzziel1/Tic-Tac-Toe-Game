@@ -10,43 +10,43 @@ let ticTacToeHTML = `<div class="play-container">
 </div>
 </div>`;
 
-let ticTacToeButtonsHTML = "";
+let ticTacToeButtonsHTML = '';
 const gridButtons = [
   {
-    name: "R1",
-    value: "",
+    name: 'R1',
+    value: '',
   },
   {
-    name: "M1",
-    value: "",
+    name: 'M1',
+    value: '',
   },
   {
-    name: "L1",
-    value: "",
+    name: 'L1',
+    value: '',
   },
   {
-    name: "R2",
-    value: "",
+    name: 'R2',
+    value: '',
   },
   {
-    name: "M2",
-    value: "",
+    name: 'M2',
+    value: '',
   },
   {
-    name: "L2",
-    value: "",
+    name: 'L2',
+    value: '',
   },
   {
-    name: "R3",
-    value: "",
+    name: 'R3',
+    value: '',
   },
   {
-    name: "M3",
-    value: "",
+    name: 'M3',
+    value: '',
   },
   {
-    name: "L3",
-    value: "",
+    name: 'L3',
+    value: '',
   },
 ];
 
@@ -70,20 +70,20 @@ let L3 = gridButtons[8].value;
 //Array Tic Tac Toe Values
 
 function renderHTML() {
-  document.querySelector(".js-main").innerHTML = ticTacToeHTML;
+  document.querySelector('.js-main').innerHTML = ticTacToeHTML;
 
-  const playButtonElement = document.querySelector(".js-play-button");
+  const playButtonElement = document.querySelector('.js-play-button');
   if (playButtonElement) {
-    playButtonElement.addEventListener("click", playButton);
+    playButtonElement.addEventListener('click', playButton);
   }
 }
 
 function renderButtonsHTML() {
-  document.querySelector(".js-grid").innerHTML = ticTacToeButtonsHTML;
+  document.querySelector('.js-grid').innerHTML = ticTacToeButtonsHTML;
 
-  const playButtonElement = document.querySelector(".js-play-button");
+  const playButtonElement = document.querySelector('.js-play-button');
   if (playButtonElement) {
-    playButtonElement.addEventListener("click", playButton);
+    playButtonElement.addEventListener('click', playButton);
   }
 }
 function playButton() {
@@ -107,10 +107,10 @@ function playButton() {
   renderHTML();
 
   const backButtonElement = document.querySelector(
-    ".js-back-to-title-screen-button"
+    '.js-back-to-title-screen-button'
   );
   if (backButtonElement) {
-    backButtonElement.addEventListener("click", () => {
+    backButtonElement.addEventListener('click', () => {
       ticTacToeHTML = `<div class="play-container">
       <div>
         <img
@@ -149,29 +149,29 @@ function checkWin() {
       gridButtons[c].value,
     ];
 
-    if (cells.every((cell) => cell === "O")) {
-      alert("O Wins");
+    if (cells.every((cell) => cell === 'O')) {
+      alert('O Wins');
       return;
-    } else if (cells.every((cell) => cell === "X")) {
-      alert("X Wins");
+    } else if (cells.every((cell) => cell === 'X')) {
+      alert('X Wins');
       return;
     } else if (counter > 8) {
-      alert("Draw");
+      alert('Draw');
       return;
     }
   }
 
-  console.log("Continue");
+  console.log('Continue');
 }
 
 renderHTML();
-
+//Welcome
 function chooseMove() {
-  const xButtonElement = document.querySelector(".js-x-button");
-  const oButtonElement = document.querySelector(".js-o-button");
+  const xButtonElement = document.querySelector('.js-x-button');
+  const oButtonElement = document.querySelector('.js-o-button');
 
   if (xButtonElement) {
-    xButtonElement.addEventListener("click", () => {
+    xButtonElement.addEventListener('click', () => {
       counter++;
       if (counter % 2 === 0) {
         playersMove = `O`;
@@ -202,7 +202,7 @@ function chooseMove() {
   }
 
   if (oButtonElement) {
-    oButtonElement.addEventListener("click", () => {
+    oButtonElement.addEventListener('click', () => {
       if (counter % 2 === 0) {
         playersMove = `O`;
       } else {
@@ -245,9 +245,9 @@ function changeName(button) {
 }
 
 function ticTacToeButtonJs() {
-  document.querySelectorAll(".js-buttons").forEach((button) => {
+  document.querySelectorAll('.js-buttons').forEach((button) => {
     button.addEventListener(
-      "click",
+      'click',
       () => {
         counter++;
         console.log(counter);
@@ -278,7 +278,7 @@ function ticTacToeButtonJs() {
           checkWin();
 
           document.querySelector(
-            ".js-title"
+            '.js-title'
           ).innerHTML = `${playersMove}'s Move`;
         }
       },
